@@ -1,0 +1,28 @@
+```sql
+-- Table: public.survey_responses
+
+-- DROP TABLE IF EXISTS public.survey_responses;
+
+CREATE TABLE IF NOT EXISTS public.survey_responses
+(
+    customer_id text COLLATE pg_catalog."default" NOT NULL,
+    timely_responses integer,
+    timely_fixes integer,
+    timely_replacements integer,
+    reliability integer,
+    options integer,
+    respectful_response integer,
+    courteous_exchange integer,
+    evidence_of_active_listening integer,
+    CONSTRAINT survey_responses_customer_id_fk FOREIGN KEY (customer_id)
+        REFERENCES public.customer (customer_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.survey_responses
+    OWNER to postgres;
+```
